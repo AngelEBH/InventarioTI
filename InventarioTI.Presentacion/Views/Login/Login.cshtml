@@ -1,0 +1,192 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>Login</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    @Styles.Render("~/Content/assets/css")
+
+    <!-- Custom styling -->
+    <style>
+        .page-signin-modal {
+            position: relative;
+            top: auto;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            z-index: 1;
+            display: block;
+        }
+
+        .page-signin-form-group {
+            position: relative;
+        }
+
+        .page-signin-icon {
+            position: absolute;
+            line-height: 21px;
+            width: 36px;
+            border-color: rgba(0, 0, 0, .14);
+            border-right-width: 1px;
+            border-right-style: solid;
+            left: 1px;
+            top: 9px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        html[dir="rtl"] .page-signin-icon {
+            border-right: 0;
+            border-left-width: 1px;
+            border-left-style: solid;
+            left: auto;
+            right: 1px;
+        }
+
+        html:not([dir="rtl"]) .page-signin-icon + .page-signin-form-control {
+            padding-left: 50px;
+        }
+
+        html[dir="rtl"] .page-signin-icon + .page-signin-form-control {
+            padding-right: 50px;
+        }
+
+        #page-signin-forgot-form {
+            display: none;
+        }
+
+        body {
+            background: #0264d6; /* Old browsers */
+            background: -moz-radial-gradient(center, ellipse cover, #0264d6 1%, #1c2b5a 100%); /* FF3.6+ */
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#0264d6), color-stop(100%,#1c2b5a)); /* Chrome,Safari4+ */
+            background: -webkit-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* Opera 12+ */
+            background: -ms-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* IE10+ */
+            background: radial-gradient(ellipse at center, #0264d6 1%,#1c2b5a 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0264d6', endColorstr='#1c2b5a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            height: calc(100vh);
+            width: 100%;
+            background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .5)), url('../../Resource/.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .fondo-transparente-cont-opaco {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+        }
+    </style>
+    <!-- / Custom styling -->
+</head>
+<body>
+    <div style="margin-top:60px;">
+        <div class="modal-dialog">
+            <div class="col-md-7 " style="margin-right:150px; margin-left:150px; margin-top:50px">
+                <div class="box m-a-0 fondo-transparente-cont-opaco">
+                    <div class="box-row">
+
+
+                        <div id="divform" class="box-cell col-md-7">
+                            <form id="LoginForm" class="p-a-4">
+                                <h4 class="m-t-0 m-b-4 text-xs-center font-weight-semibold">Iniciar Sesion</h4>
+
+                                <fieldset class="page-signin-form-group form-group form-group-lg">
+                                    <div class="page-signin-icon text-muted"><i class="ion-person"></i></div>
+                                    <input type="text" class="page-signin-form-control form-control" placeholder="Usuario" id="User" required>
+                                </fieldset>
+
+                                <fieldset class="page-signin-form-group form-group form-group-lg">
+                                    <div class="page-signin-icon text-muted"><i class="ion-asterisk"></i></div>
+                                    <input type="password" class="page-signin-form-control form-control" placeholder="Contraseña" id="Pass" required>
+                                    <small id="MensajeContra" class="form-message light">Usuario y/o Contraseña Incorrecta.</small>
+                                </fieldset>
+
+                                <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Ingresar</button>
+                            </form>
+
+                            <div class="p-y-3 p-x-4 b-t-1 fondo-transparente-cont-opaco" id="page-signin-social">
+                                <div>© Administracion de Cuentas Iglesias.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wait" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border:none">
+                <div>
+                    <div id="" style="position:absolute;top:50%;left:50%;padding:2px;">
+                        <img src="~/Content/Resources/load.gif" width="64" height="64" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Content/assets/js")
+    <script type="text/javascript">
+
+        $("#MensajeContra").hide();
+
+        $("#LoginForm").submit(function (event) {
+            event.preventDefault();
+
+            var loginModel =
+            {
+                Usuario: $("#User").val(),
+                contrasenia: $("#Pass").val()
+            };
+            $.ajax({
+                url: "/Login/PostLogin",
+                type: "POST",
+                dataType: "json",
+                data: loginModel,
+                complete: function (Status) {
+                    if (Status.responseJSON == 404) {
+                        //window.alert("Usuario o Password Incorrecto")
+                        //$("#LoginForm")[0].reset();
+                        $("#divform").addClass('has-error');
+                        $("#MensajeContra").show();
+                        contrasenia: $("#Pass").val('');
+                    }
+                    else {
+                        //window.alert("Usuario y Password Correcto")
+                        $("#divform").removeClass('has-error');
+                        $("#MensajeContra").hide();
+                        window.location.href = "/Home/Inicio";
+                    }
+                }
+            });
+
+        });
+
+        $(document).ajaxStart(function () {
+            $("#wait").modal('show');
+        });
+
+        $(document).ajaxComplete(function () {
+            $('#wait').modal('hide');
+        });
+
+    </script>
+
+
+
+</body>
+</html>

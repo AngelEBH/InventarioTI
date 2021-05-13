@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fa930f557884457d873593a953009379" Name="Diagram1">
+        <EntityTypeShape EntityType="Inventario_TIModel.Bodegas" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Empleados" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Inventario" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Marcas" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Movimientos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Productos" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.TiposMovimientos" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.TiposProducto" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Ubicacion" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Inventario_TIModel.Usuarios" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Movimientos_Bodegas" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Movimientos_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Inventario_Movimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Inventario_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Productos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Movimientos_TiposMovimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Movimientos_Ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Inventario_TIModel.FK_Productos_TiposProducto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

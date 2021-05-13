@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{317E235E-1B3E-4D6D-B512-AAA9C7748166}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InventarioTI.Data</RootNamespace>
+    <AssemblyName>InventarioTI.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bodegas.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioD\InventarioData.cs" />
+    <Compile Include="Inventario\InventarioEquipoDatos.cs" />
+    <Compile Include="Inventario_TIEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario_TIEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario_TIEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario_TIEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventario_TIEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Marcas.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\LoginData.cs" />
+    <Compile Include="Seguridad\UsuarioData.cs" />
+    <Compile Include="TiposMovimientos.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposProducto.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ubicacion.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>Inventario_TIEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\conexion\conexion.csproj">
+      <Project>{4E5D3085-BB5C-47E7-95A2-40272BDD1FEB}</Project>
+      <Name>conexion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventarioTIModelo\InventarioTIModelo.csproj">
+      <Project>{372184ed-2ddc-4368-b91f-46b117b9c737}</Project>
+      <Name>InventarioTIModelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Inventario_TIEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Inventario_TIEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Inventario_TIEntities.edmx.diagram">
+      <DependentUpon>Inventario_TIEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Inventario_TIEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Inventario_TIEntities.edmx</DependentUpon>
+      <LastGenOutput>Inventario_TIEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Inventario_TIEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Inventario_TIEntities.edmx</DependentUpon>
+      <LastGenOutput>Inventario_TIEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

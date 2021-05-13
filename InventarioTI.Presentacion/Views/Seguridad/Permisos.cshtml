@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewData["Title"] = "Permisos";
+}
+<div class="px-content">
+    <div class="page-header">
+        <h1><span class="text-muted font-weight-light"><i class="glyphicon glyphicon-lock" style=""></i>Seguridad / </span>Administración de Permisos</h1>
+    </div>
+
+    <div class="panel-body">
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="panel-title">Administración de Usuarios</div>
+                <a type="button" class="btn btn-info" style="float: right" href="" data-toggle="modal" data-target="#modal-large"><i class=" glyphicon glyphicon-cog"></i></a>
+                <br />
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label>Seleccione un Rol</label>
+                        <select class="form-control">
+                            <option></option>
+                            <option value="1">Master</option>
+                            <option value="0">Admin</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4">
+                        <label>Seleccione un Usuario</label>
+                        <select class="form-control">
+                            <option></option>
+                            <option value="1">a.bautista@prueba.com</option>
+                            <option value="0">ale.Gonzales@prueba.com</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-4">
+                        <button type="button" class="btn">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table">
+                    <table class="table" id="datatables">
+                        <thead>
+                            <tr>
+                                <th>Menu</th>
+                                <th>Pantalla</th>
+                                <th>Permiso Usuario:</th>
+                                <th>Permiso Rol:</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td>1</td>
+                                <td>Matricula</td>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-large" tabindex="-1">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">CAMBIO DE CONTRASEÑA</h4>
+                        <div class="panel-body">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Editando Contraseña</div>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="table">
+                                        <table class="table" id="datatables">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Nombre</th>
+                                                    <th>Contraseña:</th>
+                                                    <th>Opciones:</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>12322</td>
+                                                    <td>Admin@prueba.com</td>
+                                                    <td>123</td>
+
+                                                    <td>
+                                                        <a type="button" class="btn btn-danger"><i class="glyphicon glyphicon-file"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery.min.js"></script>
+<script>
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+

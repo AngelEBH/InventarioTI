@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Inventario_TIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bodegas">
+          <Key>
+            <PropertyRef Name="BodegaID" />
+          </Key>
+          <Property Name="BodegaID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BodegaDescripcion" Type="varchar" MaxLength="100" />
+          <Property Name="UbicacionID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="EmpleadoID" />
+          </Key>
+          <Property Name="EmpleadoID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" />
+          <Property Name="Fecha_Nacimiento" Type="date" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="InventarioID" />
+          </Key>
+          <Property Name="InventarioID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductoID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="MovimientoID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="MarcaID" />
+          </Key>
+          <Property Name="MarcaID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Movimientos">
+          <Key>
+            <PropertyRef Name="MovimientoID" />
+          </Key>
+          <Property Name="MovimientoID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMovimientoID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BodegaID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="UbicacionID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EmpleadoID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="100" />
+          <Property Name="TipoProductoID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="MarcaID" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="TiposMovimientos">
+          <Key>
+            <PropertyRef Name="TipoMovimientoID" />
+          </Key>
+          <Property Name="TipoMovimientoID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TiposProducto">
+          <Key>
+            <PropertyRef Name="TipoProductoID" />
+          </Key>
+          <Property Name="TipoProductoID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoProducto" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="UbicacionID" />
+          </Key>
+          <Property Name="UbicacionID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" />
+          <Property Name="Clave" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Inventario_Movimientos">
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimientos">
+              <PropertyRef Name="MovimientoID" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="MovimientoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventario_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoID" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_Bodegas">
+          <End Role="Bodegas" Type="Self.Bodegas" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bodegas">
+              <PropertyRef Name="BodegaID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="BodegaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_TiposMovimientos">
+          <End Role="TiposMovimientos" Type="Self.TiposMovimientos" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposMovimientos">
+              <PropertyRef Name="TipoMovimientoID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="TipoMovimientoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_Ubicacion">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="UbicacionID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="UbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="MarcaID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="MarcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProducto">
+          <End Role="TiposProducto" Type="Self.TiposProducto" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="TipoProductoID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="TipoProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spInsertarBodegas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BodegaDescripcion" Type="varchar" Mode="In" />
+          <Parameter Name="UbicacionID" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="spInsertarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Nacimiento" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spInsertarInventario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductoID" Type="numeric" Mode="In" />
+          <Parameter Name="MovimientoID" Type="numeric" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertarMarca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoMovimientoID" Type="numeric" Mode="In" />
+          <Parameter Name="BodegaID" Type="numeric" Mode="In" />
+          <Parameter Name="UbicacionID" Type="numeric" Mode="In" />
+          <Parameter Name="EmpleadoID" Type="numeric" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="ProductoID" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="spInsertarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
+          <Parameter Name="TipoProductoID" Type="numeric" Mode="In" />
+          <Parameter Name="MarcaID" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="spInsertarTiposMovimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoMovimiento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarTiposProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoProductos" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ubicacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Inventario_TIModelStoreContainer">
+          <EntitySet Name="Bodegas" EntityType="Self.Bodegas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposMovimientos" EntityType="Self.TiposMovimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposProducto" EntityType="Self.TiposProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Inventario_Movimientos" Association="Self.FK_Inventario_Movimientos">
+            <End Role="Movimientos" EntitySet="Movimientos" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventario_Productos" Association="Self.FK_Inventario_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_Bodegas" Association="Self.FK_Movimientos_Bodegas">
+            <End Role="Bodegas" EntitySet="Bodegas" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_Empleados" Association="Self.FK_Movimientos_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_TiposMovimientos" Association="Self.FK_Movimientos_TiposMovimientos">
+            <End Role="TiposMovimientos" EntitySet="TiposMovimientos" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_Ubicacion" Association="Self.FK_Movimientos_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProducto" Association="Self.FK_Productos_TiposProducto">
+            <End Role="TiposProducto" EntitySet="TiposProducto" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Inventario_TIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bodegas">
+          <Key>
+            <PropertyRef Name="BodegaID" />
+          </Key>
+          <Property Name="BodegaID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BodegaDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UbicacionID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Movimientos" Relationship="Self.FK_Movimientos_Bodegas" FromRole="Bodegas" ToRole="Movimientos" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="EmpleadoID" />
+          </Key>
+          <Property Name="EmpleadoID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Movimientos" Relationship="Self.FK_Movimientos_Empleados" FromRole="Empleados" ToRole="Movimientos" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="InventarioID" />
+          </Key>
+          <Property Name="InventarioID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MovimientoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="Movimientos" Relationship="Self.FK_Inventario_Movimientos" FromRole="Inventario" ToRole="Movimientos" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Inventario_Productos" FromRole="Inventario" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="MarcaID" />
+          </Key>
+          <Property Name="MarcaID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Marcas" FromRole="Marcas" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Movimientos">
+          <Key>
+            <PropertyRef Name="MovimientoID" />
+          </Key>
+          <Property Name="MovimientoID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMovimientoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BodegaID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UbicacionID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EmpleadoID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Bodegas" Relationship="Self.FK_Movimientos_Bodegas" FromRole="Movimientos" ToRole="Bodegas" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Movimientos_Empleados" FromRole="Movimientos" ToRole="Empleados" />
+          <NavigationProperty Name="Inventario" Relationship="Self.FK_Inventario_Movimientos" FromRole="Movimientos" ToRole="Inventario" />
+          <NavigationProperty Name="TiposMovimientos" Relationship="Self.FK_Movimientos_TiposMovimientos" FromRole="Movimientos" ToRole="TiposMovimientos" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK_Movimientos_Ubicacion" FromRole="Movimientos" ToRole="Ubicacion" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoProductoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MarcaID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Inventario" Relationship="Self.FK_Inventario_Productos" FromRole="Productos" ToRole="Inventario" />
+          <NavigationProperty Name="Marcas" Relationship="Self.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
+          <NavigationProperty Name="TiposProducto" Relationship="Self.FK_Productos_TiposProducto" FromRole="Productos" ToRole="TiposProducto" />
+        </EntityType>
+        <EntityType Name="TiposMovimientos">
+          <Key>
+            <PropertyRef Name="TipoMovimientoID" />
+          </Key>
+          <Property Name="TipoMovimientoID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMovimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Movimientos" Relationship="Self.FK_Movimientos_TiposMovimientos" FromRole="TiposMovimientos" ToRole="Movimientos" />
+        </EntityType>
+        <EntityType Name="TiposProducto">
+          <Key>
+            <PropertyRef Name="TipoProductoID" />
+          </Key>
+          <Property Name="TipoProductoID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_TiposProducto" FromRole="TiposProducto" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="UbicacionID" />
+          </Key>
+          <Property Name="UbicacionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ubicacion1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Movimientos" Relationship="Self.FK_Movimientos_Ubicacion" FromRole="Ubicacion" ToRole="Movimientos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Movimientos_Bodegas">
+          <End Role="Bodegas" Type="Self.Bodegas" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bodegas">
+              <PropertyRef Name="BodegaID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="BodegaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventario_Movimientos">
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimientos">
+              <PropertyRef Name="MovimientoID" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="MovimientoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventario_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoID" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Marcas">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="MarcaID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="MarcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_TiposMovimientos">
+          <End Role="TiposMovimientos" Type="Self.TiposMovimientos" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposMovimientos">
+              <PropertyRef Name="TipoMovimientoID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="TipoMovimientoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movimientos_Ubicacion">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="0..1" />
+          <End Role="Movimientos" Type="Self.Movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="UbicacionID" />
+            </Principal>
+            <Dependent Role="Movimientos">
+              <PropertyRef Name="UbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProducto">
+          <End Role="TiposProducto" Type="Self.TiposProducto" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="TipoProductoID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="TipoProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Inventario_TIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bodegas" EntityType="Self.Bodegas" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Inventario" EntityType="Self.Inventario" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" />
+          <EntitySet Name="Movimientos" EntityType="Self.Movimientos" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="TiposMovimientos" EntityType="Self.TiposMovimientos" />
+          <EntitySet Name="TiposProducto" EntityType="Self.TiposProducto" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Movimientos_Bodegas" Association="Self.FK_Movimientos_Bodegas">
+            <End Role="Bodegas" EntitySet="Bodegas" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_Empleados" Association="Self.FK_Movimientos_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventario_Movimientos" Association="Self.FK_Inventario_Movimientos">
+            <End Role="Movimientos" EntitySet="Movimientos" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventario_Productos" Association="Self.FK_Inventario_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_TiposMovimientos" Association="Self.FK_Movimientos_TiposMovimientos">
+            <End Role="TiposMovimientos" EntitySet="TiposMovimientos" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimientos_Ubicacion" Association="Self.FK_Movimientos_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Movimientos" EntitySet="Movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProducto" Association="Self.FK_Productos_TiposProducto">
+            <End Role="TiposProducto" EntitySet="TiposProducto" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Inventario_TIModelStoreContainer" CdmEntityContainer="Inventario_TIEntities">
+          <EntitySetMapping Name="Bodegas">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Bodegas">
+              <MappingFragment StoreEntitySet="Bodegas">
+                <ScalarProperty Name="BodegaID" ColumnName="BodegaID" />
+                <ScalarProperty Name="BodegaDescripcion" ColumnName="BodegaDescripcion" />
+                <ScalarProperty Name="UbicacionID" ColumnName="UbicacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventario">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Inventario">
+              <MappingFragment StoreEntitySet="Inventario">
+                <ScalarProperty Name="InventarioID" ColumnName="InventarioID" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="MovimientoID" ColumnName="MovimientoID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimientos">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Movimientos">
+              <MappingFragment StoreEntitySet="Movimientos">
+                <ScalarProperty Name="MovimientoID" ColumnName="MovimientoID" />
+                <ScalarProperty Name="TipoMovimientoID" ColumnName="TipoMovimientoID" />
+                <ScalarProperty Name="BodegaID" ColumnName="BodegaID" />
+                <ScalarProperty Name="UbicacionID" ColumnName="UbicacionID" />
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
+                <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposMovimientos">
+            <EntityTypeMapping TypeName="Inventario_TIModel.TiposMovimientos">
+              <MappingFragment StoreEntitySet="TiposMovimientos">
+                <ScalarProperty Name="TipoMovimientoID" ColumnName="TipoMovimientoID" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposProducto">
+            <EntityTypeMapping TypeName="Inventario_TIModel.TiposProducto">
+              <MappingFragment StoreEntitySet="TiposProducto">
+                <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
+                <ScalarProperty Name="TipoProducto" ColumnName="TipoProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Ubicacion">
+              <MappingFragment StoreEntitySet="Ubicacion">
+                <ScalarProperty Name="UbicacionID" ColumnName="UbicacionID" />
+                <ScalarProperty Name="Ubicacion1" ColumnName="Ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Inventario_TIModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,360 @@
+﻿<div class="px-content">
+    <div class="page-header">
+        <h1><span class="text-muted font-weight-light"><i class="glyphicon glyphicon-book"> </br></i>Inventario / </span>Ingresar Inventario de Informatica</h1>
+    </div>
+
+    <div class="wizard-content">
+        <form class="wizard-pane active" id="wizardInventario">
+            <div class="row">
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Departamento</label>
+                        <select id="Departamento" class="form-control" onchange="generateCodeEI()">
+                            <option value="" selected="selected" disabled>Departamento</option>
+                            @foreach (var act in ViewBag.Departamento)
+                            {
+                                <option value="@act.ID_DEPTO">@act.NOMBRE_DEPTO</option>}
+                        </select>
+                    </fieldset>
+                </div>
+         
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Codigo Inventario</label>
+                        <input type="text" name="CodigoInventario" class="form-control" id="CodigoImventarioI" placeholder="001-001-00" oninput="generateCodeEI() " disabled>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Fecha Compra</label>
+                        <input type="Date" class="form-control" id="FechaCompra">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Mes Depesacion</label>
+                        <input type="date" name="MES_DEPRESIACION" class="form-control" id="MES_DEPRESIACION">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Proveedor</label>
+                   
+                        @Html.DropDownList("Proveedor", new SelectList(ViewBag.Proveedor, "ID_PROVEEDOR", "NOMBRE_PROVEEDOR"), "Seleccione",
+                            new
+                            {
+                                @class = "form-control"
+                            })
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Tipo Equipo</label>
+                        <select id="Tipo" class="form-control" onchange="generateCodeEI()">
+                            <option value="" selected="selected" disabled>Tipo equipo</option>
+                            @foreach (var act in ViewBag.TipoEquipo)
+                            {
+                                <option value="@act.ID_TIPO_EQUIPO">@act.DESCRIPCION</option>}
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Marca</label>
+                        @Html.DropDownList("Marca", new SelectList(ViewBag.Marca, "ID_MARCA", "DESCRIPCION"), "Seleccione",
+                            new { @class = "form-control" })
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Color</label>
+                        <input type="text" name="COLOR" class="form-control" id="COLOR">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Modelo</label>
+                        <input type="text" name="MODELO" class="form-control" id="MODELO">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Numero Serie:</label>
+                        <input type="text" name="NSERIE" class="form-control" id="NSERIE">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Tipo Procesador :</label>
+                        <input type="text" name="TipoProcesador" class="form-control" id="TipoProcesador">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Disquetera</label>
+                        <select class="form-control " id="Disquetera">
+                            <option>Si</option>
+                            <option>NO</option>
+
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Lector DVD:</label>
+                        <select class="form-control " id="Lector_Dvd">
+                            <option>Si</option>
+                            <option>NO</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Lector SD MMC :</label>
+                        <select class="form-control " id="LectorSDMMC">
+                            <option>Si</option>
+                            <option>NO</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Parlantes Externos :</label>
+                        <select class="form-control " id="parlantes">
+                            <option>Si</option>
+                            <option>NO</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Monitor Color:</label>
+                        <input type="text" name="MonitorColor" class="form-control" id="MonitorColor">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Monitor Serie:</label>
+                        <input type="text" name="MonitorSerie" class="form-control" id="MonitorSerie">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Monitor Tamaño :</label>
+                        <input type="text" name="Monitor_tamanio" class="form-control" id="Monitor_tamanio">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Teclado Color:</label>
+                        <input type="text" name="Teclado_Color" class="form-control" id="Teclado_Color">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Monitor Tipo:</label>
+                        <input type="text" name="MonitorColor" class="form-control" id="Monitor_Tipo">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Teclado Modelo:</label>
+                        <input type="text" name="Teclado_Modelo" class="form-control" id="Teclado_Modelo">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Mouse Color :</label>
+                        <input type="text" name="Mouse_Color" class="form-control" id="Mouse_Color">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Ubicacion :</label>
+                        <input type="text" name="ubicacion" class="form-control" id="ubicacion">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Empleado: </label>
+                        @Html.DropDownList("Empleado", new SelectList(ViewBag.Empleado, " ID_EMPLADO", "NOMBRE_EMPLEADO"), "Seleccione",
+                            new { @class = "form-control" })
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+             
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Condicion Actual:</label>
+                        <input type="text" name="Condicion" class="form-control" id="Condicion">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Usuario Responsable :</label>
+                        <input type="text" name="Usuario" class="form-control" id="Usuario">
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="form-group">
+                        <label>Estado :</label>
+                        <input type="text" name="ESTADO" class="form-control" id="ESTADO">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row" style=" margin: 5px 0px 0px 10px;">
+                <div class="col-md-3">
+                    <div id="mostrar">
+                        <button type="button" class="btn btn-default" id="buttonQR" onclick="MostrarQRI()">
+                            Mostrar QR
+                        </button>
+                        <button type="button" class="btn btn-default" id="printQRI" onclick="PrintQRI()">
+                            Imprimir QR
+                        </button>
+                    </div>
+
+                </div>     
+            </div>
+            <div id="qrCod"></div>
+            <div class="panel-wide-block p-x-3 p-t-3 b-t-1 bg-white text-xs-right">
+                <center> <button type="button" class="btn btn-primary" onclick="GuardarEI()">Guardar</button>  </center>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+
+          function GuardarEI()
+        {
+			
+            var Departamento = $("#Departamento :selected").val();
+            var codigoInventario = $("#CodigoImventarioI").val();
+            var FechaCompra = $("#FechaCompra").val();
+            var MesDEpreciacion = $("#MES_DEPRESIACION").val();
+            var Proveedor = $("#Proveedor :selected").val();
+            var TipoEquipo = $("#Tipo :selected").val();
+            var Marca = $("#Marca :selected").val();
+            var Color = $("#COLOR").val();
+            var Modelo = $("#MODELO").val();
+            var Nserie = $("#NSERIE").val();
+            var TProcesador = $("#TipoProcesador").val();
+            var Disquetera = $("#Disquetera :selected").text();
+            var Lector_dvd = $("#Lector_Dvd :selected").text();
+            var Lector_sd_mmc = $("#LectorSDMMC :selected").text();
+            var Parlanntes_Externos = $("#parlantes :Selected").text();
+           var Monitor_Color = $("#MonitorColor").val();
+            var Monitor_Serie = $("#MonitorSerie").val();
+            var Monitor_tamanio = $("#Monitor_tamanio").val();
+            var Monitor_Tipo = $("#Monitor_Tipo").val();
+            var TecladoColor = $("#Teclado_Color").val();
+            var TecladoModelo = $("#Teclado_Modelo").val();
+            var MouseColor = $("#Mouse_Color").val();
+            var Ubicacion = $("#ubicacion").val();
+
+            var Empleado = $("#Empleado :selected").val();
+            var CondicionActual = $("#Condicion").val();
+            var UsuarioResponsable = $("#Usuario").val();
+            var Estado = $("#ESTADO").val();
+
+
+            $.ajax({
+
+                url: "@Url.Action("InsertarInventarioEquipo", "Inventario")",
+                type: "POST",
+                data: {
+                    Departamento: Departamento, codigoInventario: codigoInventario,
+                    FechaCompra: FechaCompra,
+                    MesDEpreciacion: MesDEpreciacion, Proveedor: Proveedor, TipoEquipo: TipoEquipo, Marca: Marca, Color: Color, Modelo: Modelo, Nserie: Nserie, TProcesador: TProcesador,
+                    Disquetera: Disquetera, Lector_dvd: Lector_dvd, Lector_sd_mmc: Lector_sd_mmc, Parlanntes_Externos: Parlanntes_Externos, Monitor_Color: Monitor_Color, Monitor_Serie: Monitor_Serie,
+                    Monitor_tamanio: Monitor_tamanio, Monitor_Tipo: Monitor_Tipo, TecladoColor: TecladoColor, TecladoModelo: TecladoModelo, MouseColor: MouseColor, Ubicacion: Ubicacion, Empleado: Empleado,
+                    CondicionActual: CondicionActual, UsuarioResponsable: UsuarioResponsable, Estado: Estado},
+                success: function (data)
+                {
+                    alert("se ha ingresado el inventario");
+
+                },
+                error: function (errormessage)
+                {
+
+                }
+            });
+
+
+        }
+
+        function MostrarQRI()
+	{
+		generateCodeEI();
+		$("#qrCod").html("");
+		var cod = $("#CodigoImventarioI").val();
+		var dep = $("#Departamento :selected").text();
+		var code = GenerarCodigoInventarioEI;
+		var ubi = $("#ubicacion").val();
+		var asignado = $("#Usuario").val();
+
+		var union = cod + " | " + dep + " | " + ubi + " | " + asignado;
+
+        var qrcode = new QRCode("qrCod", {
+
+            width: 75,
+            height: 75,
+		});
+        qrcode.makeCode(union);
+    }
+
+    	function PrintQRI(){
+
+		var w = window.open();
+		var html = $("#qrCod").html();
+		var cod = GenerarCodigoInventarioEI;
+		var pru = cod;
+		$(w.document.body).html('<html><div style="float:left">' + html + '</div><div> <b><font size=2>&nbsp ACTIVOS FIJOS</font></b></div><div><b><font size=2>&nbsp MUNICIPALIDAD</font></b></div><div>&nbsp&nbsp' + pru + '</div>');
+        w.print();
+    }
+
+    function generateCodeEI() {
+
+        var Departamento = $("#Departamento :selected").val();
+	       $.ajax({
+               url: "@Url.Action("GenerarCodigoInventario", "Inventario")",
+               data: { Departamento:Departamento},
+				type: "POST",
+				success: function (data)
+				{
+
+					var Departamento = $("#Departamento :selected").val();
+					var TipoEquipo = $("#Tipo :selected").val();
+					var enviarCodigo = $("#CodigoImventarioI");
+					GenerarCodigoInventarioEI = '00' + Departamento + '-00' + TipoEquipo + "-00"+ data;
+
+					$("#CodigoImventarioI").val(GenerarCodigoInventarioEI);
+				}
+			})
+
+	}
+
+    </script>
+     }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0a441ab494b4254a05906e73145327d" Name="Diagram1">
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Bodegas" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Clientes" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Defectos" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Generos" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Inventario" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Marcas" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Modelos" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Productos" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Proveedores" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Reclamo" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Suministros" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Tipos_Productos" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWatchMaking21Model.Ventas" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Inventario_Bodegas" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Clientes_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Clientes_Generos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Reclamo_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Ventas_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Defectos_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Inventario_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Ventas_Inventario" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Productos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Productos_Modelos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Productos_Proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Productos_Tipos_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWatchMaking21Model.FK_Suministros_Proveedores" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

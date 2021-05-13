@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01b012eaa5d84d90947684bed87af2ad" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.AGENCIA" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DEPARTAMENTO" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DEPTO" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_CONTROL_EI" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_CONTROL_ME" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_DPEI" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_DPME" Width="1.5" PointX="12" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_TOMA_ME" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.DETALLE_TOMAEI" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.EMPLEADO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_CONTROL_EI" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_CONTROL_ME" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_DPED" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_DPEI" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_DPME" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ENCABEZADO_TOMAEI" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.MARCAS" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.MODULO" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.MUNICIPIO" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.OPERACIONES" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.PROVEEDOR" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ROL" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.ROL_OPERACION" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.TIPO_CONTROL" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.TIPO_EQUIPO" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.TIPO_EQUIPO_OFICINA" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_AGENCIA_MUNICIPIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_DEPTO_ODEF_AGENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_ENCABEZADO_DPED_AGENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_MUNICIPIO_DEPARTAMENTO" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_ENCABEZADO_CONTROL_EI_DEPTO_ODEF" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_ENCABEZADO_CONTROL_ME_DEPTO_ODEF" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_ENCABEZADO_DPME_DEPTO_ODEF" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_DETALLE_DPME_ENCABEZADO_DPME" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_INV_ACTIVOSModel.FK_EMPLEADO_EMPLEADO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.SegUsuario" Width="1.5" PointX="7.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BD_INV_ACTIVOSModel.USUARIO" Width="1.5" PointX="9.375" PointY="15.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,377 @@
+﻿@{
+    ViewData["Title"] = "Roles";
+}
+<div class="px-content">
+    <div class="page-header">
+        <h1><span class="text-muted font-weight-light"><i class="glyphicon glyphicon-user"> </i>  Seguridad / </span>Administracion de Roles</h1>
+    </div>
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading">
+                <a class="btn btn-info" style="float: right" data-toggle="modal" data-target="#modalUsuarioCreate"><i class="glyphicon glyphicon-plus"></i> Agregar Rol</a>
+            </div>
+            <div class="panel-body" id="DataTable">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered" id="datatables">
+                        <thead>
+                            <tr>
+                                <th hidden>Id</th>
+                                <th>Descripcion</th>
+                                <th>Fecha Creacion</th>
+                                <th>Usuario Creacion</th>
+                                <th>Ultima Modificacion</th>
+                                <th>Usuario Modificacion</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in ViewBag.GetAllUsers)
+                            {
+                                <tr class="odd gradeX">
+                                    <td hidden>@user.IdUsuario</td>
+                                    <td>@user.Usuario</td>
+                                    <td>@user.NombreUsuario</td>
+                                    <td>@user.FechaCreacion</td>
+                                    <td>@user.UsuarioCreacion</td>
+                                    <td>@user.FechaModificacion</td>
+                                    <td>@user.UsuarioModificacion</td>
+                                    <td>
+                                        <a class="btn btn-info" onclick="CargarEdit(@user.IdUsuario)"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a class="btn btn-danger" onclick="Delete(@user.IdUsuario)"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a class="btn btn-success" onclick=""><i class="glyphicon glyphicon-check"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalUsuarioCreate" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Crear Usuario</h4>
+                </div>
+                <form id="CrearUsuarioForm">
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-sm-6 form-group">
+                                <label for="NombreUsuario">Nombre del Usuario</label>
+                                <input type="text" id="NombreUsuarioId" name="NombreUsuarioId" class="form-control" size="50">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Usuario">Usuario</label>
+                                <input type="text" id="UsuarioId" name="UsuarioId" class="form-control" size="12">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Contraseña">Contraseña</label>
+                                <input type="password" id="ContraseñaId" name="ContraseñaId" class="form-control" size="10">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Confirmar">Confirmar Contraseña</label>
+                                <input type="password" id="ConfirmarId" name="ConfirmarId" class="form-control" size="10">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn" onclick="$('#modalUsuarioCreate').modal('hide')">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="IdGuardar">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalUsuarioEdit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Editar Usuario</h4>
+                </div>
+                <form id="EditarUsuarioForm">
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-sm-6 form-group">
+                                <label for="NombreUsuario">Nombre del Usuario</label>
+                                <input type="text" id="NombreUsuarioUpdateId" name="NombreUsuarioUpdateId" class="form-control" size="50" readonly>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Usuario">Usuario</label>
+                                <input type="text" id="UsuarioUpdateId" name="UsuarioUpdateId" class="form-control" size="12" readonly>
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Contraseña">Contraseña</label>
+                                <input type="password" id="ContraseñaUpdateId" name="ContraseñaUpdateId" class="form-control" size="10">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Confirmar">Confirmar Contraseña</label>
+                                <input type="password" id="ConfirmarUpdateId" name="ConfirmarUpdateId" class="form-control" size="10">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                                <label for="Estado">Estado</label>
+                                <select class="form-control" id="EstadoId" name="EstadoId">
+                                    <option value="">Seleccione:</option>
+                                    <option value="A">Activo</option>
+                                    <option value="D">Deshabilitado</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn" onclick="$('#modalUsuarioEdit').modal('hide')">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="IdUpdate">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="AdvertenciaEliminarUsuario" class="modal fade modal-alert modal-warning">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><i class="fa fa-warning"></i></div>
+                <div class="modal-title">Advertencia</div>
+                <div class="modal-body">La acción a realizar no es reversible ¿esta seguro de borrar el usuario?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="EliminarUsuario">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var Fecha = yyyy + '-' + mm + '-' + dd;
+
+        var UserId;
+
+        $(function () {
+            $('#CrearUsuarioForm').pxValidate({
+                ignore: '.ignore',
+                focusInvalid: true,
+                rules: {
+                    'NombreUsuarioId': {
+                        required: true
+                    },
+                    'UsuarioId': {
+                        required: true
+                    },
+                    'ContraseñaId': {
+                        required: true
+                    },
+                    'ConfirmarId': {
+                        required: true
+                    }
+                },
+                messages: {
+                    'NombreUsuarioId': "Campo Obligatorio.",
+                    'UsuarioId': "Campo Obligatorio",
+                    'ContraseñaId': "Campo Obligatorio",
+                    'ConfirmarId': "Campo Obligatorio"
+                }
+            });
+        });
+
+
+        $("#CrearUsuarioForm").submit(function (event) {
+            event.preventDefault();
+
+            var UsuarioModel =
+            {
+                NombreUsuario: $("#NombreUsuarioId").val(),
+                Usuario: $("#UsuarioId").val(),
+                FechaCreacion: Fecha,
+                FechaModificacion: Fecha,
+                Contraseña: $("#ContraseñaId").val()
+            };
+
+            if (!$("#CrearUsuarioForm").valid()) {
+                return
+            }
+            else {
+                if ($("#ContraseñaId").val() != $("#ConfirmarId").val()) {
+                    //Alert warning
+                    Alerts(507, "Las Contraseñas no coinciden");
+
+                    $("#ContraseñaId").val('');
+                    $("#ConfirmarId").val('');
+                }
+                else {
+
+                    $.ajax({
+                        url: "/Seguridad/PostUsuario",
+                        type: "POST",
+                        dataType: "json",
+                        data: UsuarioModel,
+                        complete: function (data) {
+                            if (data.responseText == 'OK') {
+
+                                $("#datatables").load(location.href + " #datatables");
+                                Alerts(200, "Usuario creado Correctamente..");
+                                $('#modalUsuarioCreate').modal('hide');
+                                $('#CrearUsuarioForm').resetForm() = true;
+                            }
+                            else if (data.responseText == 'BadRequest') {
+
+                                Alerts(400, "Error al crear el Usuario..");
+                            }
+                            else if (data.responseText == 'Redirect') {
+
+                                Alerts(302, "Ya Existe el usuario.");
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+
+        function CargarEdit(Id) {
+            UserId = Id;
+            $.ajax({
+                url: "/Seguridad/GetUsuario",
+                type: "POST",
+                data: { Id: Id },
+                complete: function (data) {
+                    //console.log(data.responseJSON);
+                    //aulaId = data.responseJSON.id;
+                    $("#NombreUsuarioUpdateId").val(data.responseJSON.NombreUsuario);
+                    $("#UsuarioUpdateId").val(data.responseJSON.Usuario);
+                    $("#EstadoId").val(data.responseJSON.Estado);
+                    $("#modalUsuarioEdit").modal('show');
+                }
+            });
+        }
+
+        $(function () {
+            $('#EditarUsuarioForm').pxValidate({
+                ignore: '.ignore',
+                focusInvalid: true,
+                rules: {
+                    'NombreUsuarioUpdateId': {
+                        required: true
+                    },
+                    'UsuarioUpdateId': {
+                        required: true
+                    },
+                    'ContraseñaUpdateId': {
+                        required: true
+                    },
+                    'ConfirmarUpdateId': {
+                        required: true
+                    },
+                    'EstadoId': {
+                        required: true
+                    }
+                },
+                messages: {
+                    'NombreUsuarioUpdateId': "Campo Obligatorio.",
+                    'UsuarioUpdateId': "Campo Obligatorio",
+                    'ContraseñaUpdateId': "Campo Obligatorio",
+                    'ConfirmarUpdateId': "Campo Obligatorio",
+                    'EstadoId': "Seleccione una Opcion"
+                }
+            });
+        });
+
+
+        $("#EditarUsuarioForm").submit(function (event) {
+            event.preventDefault();
+
+            var UsuarioModel =
+            {
+                IdUsuario: UserId,
+                NombreUsuario: $("#NombreUsuarioUpdateId").val(),
+                Usuario: $("#UsuarioUpdateId").val(),
+                FechaModificacion: Fecha,
+                Contraseña: $("#ContraseñaUpdateId").val(),
+                Estado: $("#EstadoId :selected").val()
+            };
+
+            if (!$("#EditarUsuarioForm").valid()) {
+                return
+            }
+            else {
+                if ($("#ContraseñaUpdateId").val() != $("#ConfirmarUpdateId").val()) {
+                    //Alert warning
+                    Alerts(507, "Las Contraseñas no coinciden");
+
+                    $("#ContraseñaId").val('');
+                    $("#ConfirmarId").val('');
+                }
+                else {
+
+                    $.ajax({
+                        url: "/Seguridad/PutUsuario",
+                        type: "POST",
+                        dataType: "json",
+                        data: UsuarioModel,
+                        complete: function (data) {
+                            if (data.responseText == 'OK') {
+
+                                $("#datatables").load(location.href + " #datatables");
+                                Alerts(200, "Usuario modificado Correctamente..");
+                                $('#modalUsuarioEdit').modal('hide');
+                                $('#EditarUsuarioForm').resetForm() = true;
+                            }
+                            else if (data.responseText == 'BadRequest') {
+
+                                Alerts(400, "Error al actualizar el Usuario..");
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+
+        function Delete(Id) {
+            $("#AdvertenciaEliminarUsuario").modal('show');
+            $('#EliminarUsuario').click(function () {
+                $.ajax({
+                    url: "/Seguridad/BorrarUsuario",
+                    type: "POST",
+                    data: { Id: Id },
+                    complete: function (data) {
+                        if (data.responseText == 'OK') {
+                            $("#datatables").load(location.href + " #datatables");
+                            Alerts(200, "¡El usuario se elimino con exito!");
+                            $("#AdvertenciaEliminarUsuario").modal('hide');
+                        }
+                        if (data.responseText == 'BadRequest') { Alerts(400, "El usuario no se pudo eliminar.") }
+                    }
+                });
+            }
+            );
+        }
+
+    </script>
+}
+
+
+
+

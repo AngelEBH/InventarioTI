@@ -1,0 +1,473 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="px-content">
+    <div class="page-header">
+        <h1><span class="text-muted font-weight-light"><i class="glyphicon glyphicon-book"> </br></i>Inventario / </span>Mostrar Inventario de Informatica</h1>
+    </div>
+</div>
+
+<div id="content">
+    <div id="table_p" class="col-sm-12">
+        <div>
+            <div class="widget-body no-padding">
+                <br />
+
+                <div class="widget-body" style="padding: 10px;">
+
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
+
+                        <header></header>
+
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+
+                            </div>
+
+                            <div class="widget-body no-padding">
+                                <table id="dt_basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th width="8%"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>Departamento</th>
+
+                                            <th><i class="fa fa-fw fa-home txt-color-blue hidden-md hidden-sm hidden-xs"></i> Codigo Inventario </th>
+                                            <th><i class="fa fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Fecha Compra </th>
+                                            <th><i class="fa fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Depreciacion </th>
+                                            <th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Proveedor </th>
+                                            <th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Marca </th>
+                                            <th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Modelo </th>
+                                            <th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Tipo Equipo </th>
+                                            <th><i class="fa fa-fw fa-money text-muted hidden-md hidden-sm hidden-xs"></i> Acciones </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dt_basic"></tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalIE" tabindex="-1" role="dialog" aria-labelledby="myModalLabelJuridico" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="headerInventario">Catalogo Inventario de Informatica</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label> Departamento</label>
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" id="NOMBRE_DEPTO" readonly="readonly" placeholder="Departamento" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Numero Referencia</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="NUMERO_REFERENCIA" readonly="readonly" placeholder="Numero de Referencia" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Codigo Inventario</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="CODIGO_INVENTARIO" readonly="readonly" placeholder="Codigo Inventario" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label> Fecha Compra</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="FECHA_COMPRA" readonly="readonly" placeholder="Fecha Compra" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Mes Depreciación</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MES_DEPRECIACION" readonly="readonly" placeholder="Mes Despreciacion" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Proveedor</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="NOMBRE_PROVEEDOR" readonly="readonly" placeholder="Proveedor" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Tipo Equipo</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="DESCRIPCION_TIPO_EQUIPO" readonly="readonly" placeholder="Tipo Equipo" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Marca</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="DESCRIPCION_MARCA" readonly="readonly" placeholder="Marca" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Color</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="COLOR" readonly="readonly" placeholder="Color" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Modelo</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MODELO" readonly="readonly" placeholder="Modelo" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Numero Serie </label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="NUMERO_SERI" placeholder="Numero Serie" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Tipo Procesador</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="TIPO_PROCESADOR" readonly="readonly" placeholder="Tipo Procesador" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Disquetera</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="DISQUETERA" readonly="readonly" placeholder="Disquetera" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Lector DVD</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="LECTOR_DVD" readonly="readonly" placeholder="Lector DVD" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Lector SD MMC</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="LECTOR_SD_MMC" readonly="readonly" placeholder="Lector SD MMC" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Parlantes Externos</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="PARLANTES_EXTERNOS" placeholder="Parlantes Externos" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Monitor Tipo</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MONITOR_COLOR" readonly="readonly" placeholder="Monitor Color" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Monitor Serie</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MONITOR_SER" readonly="readonly" placeholder="Monitor serie" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Monitor tamaño</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MONITOR_TAMANIO" readonly="readonly" placeholder="Monitor Tamaño" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Teclado Color</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="TECLADO_COLOR" readonly="readonly" placeholder="Teclado Color" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Modelo teclado</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="TECLADO_MODELO" readonly="readonly" placeholder="Modelo Teclado" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Mouse Color</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="MOUSE_COLOR" readonly="readonly" placeholder="Color Mouse" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Ubicación</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="Ubicacion" placeholder="Ubicacion " />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Empleado</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="NOMBRE_EMPLEADO" readonly="readonly" placeholder="Nombre Empleado" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Condición Actual</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="CONDICION_ACTUAL" placeholder="Condicion Actual" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Usuario Responsable</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="USUARIO_RESPONSABLE" placeholder="Usuario Responsable" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label> Estado</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="ESTADO" readonly="readonly" placeholder="Estado" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div id="qrCode">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="updateEI()">
+                        Actualizar
+                    </button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        <!--termina modal-->
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+  $(document).ready(function () {
+               $("#buttonQR").click(function () {
+                printQR();
+            });
+            CargarDatos();
+        });
+           var responsiveHelper_dt_basic = undefined;
+
+
+
+    function CargarDatos() {
+
+
+                $.ajax({
+                    url: "@Url.Action("MostrarInventarioEI", "Inventario")",
+                    type: "GET",
+
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+
+                        console.log(data);
+                        var table = $('#dt_basic').DataTable({
+                            "bDestroy": true,
+                            data: data,
+                            columns: [
+                                 { data: 'NOMBRE_DEPTO' },
+
+                                { data: 'CODIGO_INVENTARIO' },
+                                { data: 'FECHA_COMPRA' },
+                                { data: 'MES_DEPRECIACION' },
+                                { data: 'NOMBRE_PROVEEDOR' },
+                                { data: 'MARCA' },
+                                { data: 'MODELO' },
+                                { data: 'DESCRIPCION' },
+                                { data: 'Extra' }
+                            ],
+
+                            select: true,
+                            "bDestroy": true,
+                            "autoWidth": true,
+                            "scrollY": "431px",
+                            "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                                $('td:eq(8)', nRow).append(
+                                    "<div class='btn-group'>"
+                                    +
+                                    "<button type='button' class='btn btn-default producto-editar' data-toggle='tooltip' data-placement='top' title='Ver Inventario'>" +
+                                    "<span class='glyphicon glyphicon-edit' aria-hidden='true'> </span>" +
+                                    "</button>  "
+                                    +
+                                     "<button type='button' class='btn btn-danger producto-eliminar' data-toggle='tooltip' data-placement='top' title='Eliminar inventario'>" +
+                                    "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>" +
+                                    "</button>"
+                                    +
+                                    "</div>" )
+                            },
+
+                            "language": {
+                                "sProcessing": "Procesando...",
+                                "sLengthMenu": "Mostrar _MENU_ registros",
+                                "sZeroRecords": "No se encontraron resultados",
+                                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                "sInfoPostFix": "",
+                                "sSearch": "Buscar:",
+                                "sUrl": "",
+                                "sInfoThousands": ",",
+                                "sLoadingRecords": "Cargando...",
+                                "oPaginate": {
+                                    "sFirst": "Primero",
+                                    "sLast": "Último",
+                                    "sNext": "Siguiente",
+                                    "sPrevious": "Anterior"
+                                },
+                                "oAria": {
+                                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                }
+                            }
+                        });
+
+                          $('#dt_basic').on('click', 'tbody .producto-editar', function () {
+
+                            var data = table.row($(this).closest('tr')).data();
+
+                             Codigo = data.CODIGO_INVENTARIO;
+
+
+
+                            $.ajax({
+                            url: "@Url.Action("ObtenerTomaInformatica", "Inventario")",
+                            type: "post",
+                            dataType: "json",
+                            data: { Codigo: Codigo },
+                            success: function (data)
+                            {
+
+                                $("#NOMBRE_DEPTO").val(data.ID_DEPTO);
+                                $("#NUMERO_REFERENCIA").val(data.NUMERO_REFERENCIA);
+                                $('#CODIGO_INVENTARIO').val(data.CODIGO_INVENTARIO);
+
+                                $('#FECHA_COMPRA').val(data.FECHA_COMPRA);
+                                $('#MES_DEPRECIACION').val(data.MES_DEPRECIACION);
+                                $('#NOMBRE_PROVEEDOR').val(data.ID_PROVEEDOR);
+                                $('#DESCRIPCION_TIPO_EQUIPO').val(data.ID_TIPO_EQUIPO);
+                                $('#DESCRIPCION_MARCA').val(data.ID_MARCA);
+                                $('#COLOR').val(data.COLOR);
+                                $('#MODELO').val(data.MODELO);
+                                $('#NUMERO_SERI').val(data.NUMERO_SERIE);
+                                $('#TIPO_PROCESADOR').val(data.TIPO_PROCESADOR);
+                                $('#DISQUETERA').val(data.DISQUETERA);
+                                $('#LECTOR_DVD').val(data.LECTOR_DVD);
+                                $('#LECTOR_SD_MMC').val(data.LECTOR_SD_MMC);
+                                $('#PARLANTES_EXTERNOS').val(data.PARLANTES_EXTERNOS);
+                                $('#MONITOR_COLOR').val(data.MONITOR_COLOR);
+                                $('#MONITOR_SER').val(data.MONITOR_SERIE);
+                                $('#MONITOR_TAMANIO').val(data.MONITOR_TAMANIO);
+                                $('#MONITOR_TIPO').val(data.MONITOR_TIPO);
+                                $('#TECLADO_COLOR').val(data.TECLADO_COLOR);
+                                $('#TECLADO_MODELO').val(data.TECLADO_MODELO);
+                                $('#MOUSE_COLOR').val(data.MOUSE_COLOR);
+                                $('#Ubicacion').val(data.UBICACION);
+								$('#ID_EMPLEADO').val(data.ID_EMPLEADO);
+                                $('#CONDICION_ACTUAL').val(data.CONDICION_ACTUAL);
+                                $('#USUARIO_RESPONSABLE').val(data.USUARIO_RESPONSABLE);
+                                $('#ESTADO').val(data.ESTADO);
+
+                                $('#myModalIE').modal('show');
+
+                            }
+                            });
+
+                          });
+                        $('#dt_basic').on('click', 'tbody .producto-eliminar', function () {
+                            var data = table.row($(this).closest('tr')).data();
+
+                             CodigoInventario = data.CODIGO_INVENTARIO;
+
+                             eliminar(CodigoInventario);
+
+                        });
+                    }
+                })
+    }
+
+        function showQR(id) {
+            $("#qrCode").html("");
+            var qrcode = new QRCode("qrCode",{
+
+            width: 85,
+            height: 85,
+		});
+            qrcode.makeCode(id);
+        }
+
+        function printQR() {
+            var w = window.open();
+            var html = $("#qrCode").html();
+
+            $(w.document.body).html(html);
+            w.print();
+        }
+       function eliminar(CodigoInventario)
+        {
+            if (confirm("Esta Seguro que desea eliminar este Inventario?") == true) {
+                $.ajax
+                    ({
+                        url: "@Url.Action("EliminarEi", "Inventario")",
+                        type: "POST",
+                        data: { CodigoInventario: CodigoInventario },
+                        success: function (data) {
+                            if (data == 1) {
+                                alert("Se Ha eliminado Inventario Con exitos");
+                               CargarDatos()
+                            }
+                        }
+
+                    });
+            }
+            }
+    function updateEI() {
+
+            var NUMERO_SERIE = $("#NUMERO_SERI").val();
+            var PARLANTES_EXTERNOS = $("#PARLANTES_EXTERNOS").val();
+            var UBICACION = $("#Ubicacion").val();
+            var CONDICION_ACTUAL = $("#CONDICION_ACTUAL").val();
+            var USUARIO_RESPONSABLE = $("#USUARIO_RESPONSABLE").val();
+            $.ajax({
+                url: "@Url.Action("UpdateEI", "Inventario")",
+                type: "POST",
+                data: {
+                    Codigo: Codigo, NUMERO_SERIE: NUMERO_SERIE, PARLANTES_EXTERNOS: PARLANTES_EXTERNOS,
+                    UBICACION: UBICACION, CONDICION_ACTUAL: CONDICION_ACTUAL, USUARIO_RESPONSABLE: USUARIO_RESPONSABLE},
+
+                success: function (data) {
+                    alert("Se ha actualizado con exitos");
+
+                     CargarDatos()
+                }
+            });
+        }
+    </script>
+
+}
+
+
+

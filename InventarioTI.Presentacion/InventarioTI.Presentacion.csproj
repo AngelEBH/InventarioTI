@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8612E8D3-2EDF-436F-921B-F00DD583450C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InventarioTI.Presentacion</RootNamespace>
+    <AssemblyName>InventarioTI.Presentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.3.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
+    <Compile Include="Filters\VerificaSession.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Producto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\assets\css\bootstrap-dark.min.css" />
+    <Content Include="Content\assets\css\bootstrap-dark.rtl.min.css" />
+    <Content Include="Content\assets\css\bootstrap.min.css" />
+    <Content Include="Content\assets\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\assets\css\pixeladmin-dark.min.css" />
+    <Content Include="Content\assets\css\pixeladmin-dark.rtl.min.css" />
+    <Content Include="Content\assets\css\pixeladmin.min.css" />
+    <Content Include="Content\assets\css\pixeladmin.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\adminflare.min.css" />
+    <Content Include="Content\assets\css\themes\adminflare.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\asphalt.min.css" />
+    <Content Include="Content\assets\css\themes\asphalt.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-black.min.css" />
+    <Content Include="Content\assets\css\themes\candy-black.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-blue.min.css" />
+    <Content Include="Content\assets\css\themes\candy-blue.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-cyan.min.css" />
+    <Content Include="Content\assets\css\themes\candy-cyan.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-green.min.css" />
+    <Content Include="Content\assets\css\themes\candy-green.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-orange.min.css" />
+    <Content Include="Content\assets\css\themes\candy-orange.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-purple.min.css" />
+    <Content Include="Content\assets\css\themes\candy-purple.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\candy-red.min.css" />
+    <Content Include="Content\assets\css\themes\candy-red.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\clean.min.css" />
+    <Content Include="Content\assets\css\themes\clean.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-blue.min.css" />
+    <Content Include="Content\assets\css\themes\dark-blue.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-cyan.min.css" />
+    <Content Include="Content\assets\css\themes\dark-cyan.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-green.min.css" />
+    <Content Include="Content\assets\css\themes\dark-green.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-orange.min.css" />
+    <Content Include="Content\assets\css\themes\dark-orange.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-purple.min.css" />
+    <Content Include="Content\assets\css\themes\dark-purple.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dark-red.min.css" />
+    <Content Include="Content\assets\css\themes\dark-red.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-blue.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-blue.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-cyan.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-cyan.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-green.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-green.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-orange.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-orange.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-purple.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-purple.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-red.min.css" />
+    <Content Include="Content\assets\css\themes\darklight-red.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\default.min.css" />
+    <Content Include="Content\assets\css\themes\default.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\dust.min.css" />
+    <Content Include="Content\assets\css\themes\dust.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\fresh.min.css" />
+    <Content Include="Content\assets\css\themes\fresh.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\frost.min.css" />
+    <Content Include="Content\assets\css\themes\frost.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\mint-dark.min.css" />
+    <Content Include="Content\assets\css\themes\mint-dark.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\purple-hills.min.css" />
+    <Content Include="Content\assets\css\themes\purple-hills.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\silver.min.css" />
+    <Content Include="Content\assets\css\themes\silver.rtl.min.css" />
+    <Content Include="Content\assets\css\themes\white.min.css" />
+    <Content Include="Content\assets\css\themes\white.rtl.min.css" />
+    <Content Include="Content\assets\css\widgets-dark.min.css" />
+    <Content Include="Content\assets\css\widgets-dark.rtl.min.css" />
+    <Content Include="Content\assets\css\widgets.min.css" />
+    <Content Include="Content\assets\css\widgets.rtl.min.css" />
+    <Content Include="Content\assets\demo\avatars\1.jpg" />
+    <Content Include="Content\assets\demo\avatars\2.jpg" />
+    <Content Include="Content\assets\demo\avatars\3.jpg" />
+    <Content Include="Content\assets\demo\avatars\4.jpg" />
+    <Content Include="Content\assets\demo\avatars\5.jpg" />
+    <Content Include="Content\assets\demo\bgs\1.jpg" />
+    <Content Include="Content\assets\demo\bgs\2.jpg" />
+    <Content Include="Content\assets\demo\bgs\3.jpg" />
+    <Content Include="Content\assets\demo\bgs\4.jpg" />
+    <Content Include="Content\assets\demo\bgs\5.jpg" />
+    <Content Include="Content\assets\demo\bgs\6.jpg" />
+    <Content Include="Content\assets\demo\bgs\7.jpg" />
+    <Content Include="Content\assets\demo\bgs\8.jpg" />
+    <Content Include="Content\assets\demo\bgs\9.jpg" />
+    <Content Include="Content\assets\demo\blog\1.jpg" />
+    <Content Include="Content\assets\demo\blog\2.jpg" />
+    <Content Include="Content\assets\demo\customers\1.png" />
+    <Content Include="Content\assets\demo\customers\10.png" />
+    <Content Include="Content\assets\demo\customers\11.png" />
+    <Content Include="Content\assets\demo\customers\12.png" />
+    <Content Include="Content\assets\demo\customers\13.png" />
+    <Content Include="Content\assets\demo\customers\14.png" />
+    <Content Include="Content\assets\demo\customers\15.png" />
+    <Content Include="Content\assets\demo\customers\16.png" />
+    <Content Include="Content\assets\demo\customers\17.png" />
+    <Content Include="Content\assets\demo\customers\2.png" />
+    <Content Include="Content\assets\demo\customers\3.png" />
+    <Content Include="Content\assets\demo\customers\4.png" />
+    <Content Include="Content\assets\demo\customers\5.png" />
+    <Content Include="Content\assets\demo\customers\6.png" />
+    <Content Include="Content\assets\demo\customers\7.png" />
+    <Content Include="Content\assets\demo\customers\8.png" />
+    <Content Include="Content\assets\demo\customers\9.png" />
+    <Content Include="Content\assets\demo\demo.css" />
+    <Content Include="Content\assets\demo\demo.js" />
+    <Content Include="Content\assets\demo\demo.rtl.css" />
+    <Content Include="Content\assets\demo\themes\adminflare.png" />
+    <Content Include="Content\assets\demo\themes\asphalt.png" />
+    <Content Include="Content\assets\demo\themes\candy-black.png" />
+    <Content Include="Content\assets\demo\themes\candy-blue.png" />
+    <Content Include="Content\assets\demo\themes\candy-cyan.png" />
+    <Content Include="Content\assets\demo\themes\candy-green.png" />
+    <Content Include="Content\assets\demo\themes\candy-orange.png" />
+    <Content Include="Content\assets\demo\themes\candy-purple.png" />
+    <Content Include="Content\assets\demo\themes\candy-red.png" />
+    <Content Include="Content\assets\demo\themes\clean.png" />
+    <Content Include="Content\assets\demo\themes\dark-blue.png" />
+    <Content Include="Content\assets\demo\themes\dark-cyan.png" />
+    <Content Include="Content\assets\demo\themes\dark-green.png" />
+    <Content Include="Content\assets\demo\themes\dark-orange.png" />
+    <Content Include="Content\assets\demo\themes\dark-purple.png" />
+    <Content Include="Content\assets\demo\themes\dark-red.png" />
+    <Content Include="Content\assets\demo\themes\darklight-blue.png" />
+    <Content Include="Content\assets\demo\themes\darklight-cyan.png" />
+    <Content Include="Content\assets\demo\themes\darklight-green.png" />
+    <Content Include="Content\assets\demo\themes\darklight-orange.png" />
+    <Content Include="Content\assets\demo\themes\darklight-purple.png" />
+    <Content Include="Content\assets\demo\themes\darklight-red.png" />
+    <Content Include="Content\assets\demo\themes\default.png" />
+    <Content Include="Content\assets\demo\themes\dust.png" />
+    <Content Include="Content\assets\demo\themes\fresh.png" />
+    <Content Include="Content\assets\demo\themes\frost.png" />
+    <Content Include="Content\assets\demo\themes\mint-dark.png" />
+    <Content Include="Content\assets\demo\themes\purple-hills.png" />
+    <Content Include="Content\assets\demo\themes\silver.png" />
+    <Content Include="Content\assets\demo\themes\white.png" />
+    <Content Include="Content\assets\demo\thumbs\1.jpg" />
+    <Content Include="Content\assets\demo\thumbs\2.jpg" />
+    <Content Include="Content\assets\demo\thumbs\3.jpg" />
+    <Content Include="Content\assets\demo\thumbs\4.jpg" />
+    <Content Include="Content\assets\demo\thumbs\5.jpg" />
+    <Content Include="Content\assets\demo\thumbs\6.jpg" />
+    <Content Include="Content\assets\demo\thumbs\7.jpg" />
+    <Content Include="Content\assets\demo\thumbs\8.jpg" />
+    <Content Include="Content\assets\js\bootstrap.min.js" />
+    <Content Include="Content\assets\js\pixeladmin.min.js" />
+    <Content Include="Content\assets\pace\pace.min.js" />
+    <Content Include="Content\bootstrap-glyphicons.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Resources\25.gif" />
+    <Content Include="Content\Resources\5.gif" />
+    <Content Include="Content\Resources\6.gif" />
+    <Content Include="Content\Resources\833.gif" />
+    <Content Include="Content\Resources\board.jpg" />
+    <Content Include="Content\Resources\col.jpg" />
+    <Content Include="Content\Resources\col1.jpg" />
+    <Content Include="Content\Resources\fondo.jpg" />
+    <Content Include="Content\Resources\fondoLo.jpg" />
+    <Content Include="Content\Resources\Images_pru.png" />
+    <Content Include="Content\Resources\load.gif" />
+    <Content Include="Content\Resources\loading-102.gif" />
+    <Content Include="Content\Resources\spinner-loading.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\qrcode.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Inicio.cshtml" />
+    <Content Include="Views\Inventario\IngresarInventario.cshtml" />
+    <Content Include="Views\Inventario\MostrarDatos.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Seguridad\SeguridadUsuarios.cshtml" />
+    <Content Include="Views\Seguridad\AdminRoles.cshtml" />
+    <Content Include="Views\Seguridad\Permisos.cshtml" />
+    <Content Include="Views\Inventario\Indicadores.cshtml" />
+    <Content Include="Views\Inventario\Index.cshtml" />
+    <Content Include="Views\Inventario\TomaInventarioInformatica.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Reporte\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InventarioTI.Data\InventarioTI.Data.csproj">
+      <Project>{317E235E-1B3E-4D6D-B512-AAA9C7748166}</Project>
+      <Name>InventarioTI.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventarioTI.Logica\InventarioTI.Logica.csproj">
+      <Project>{4bd09d04-bf6c-4108-af8e-20f23763f20e}</Project>
+      <Name>InventarioTI.Logica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventarioTIModelo\InventarioTIModelo.csproj">
+      <Project>{372184ed-2ddc-4368-b91f-46b117b9c737}</Project>
+      <Name>InventarioTIModelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9619</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9616/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

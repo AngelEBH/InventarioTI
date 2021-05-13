@@ -1,0 +1,74 @@
+﻿
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-title">Proveedor</div>
+            <hr>
+
+            <div class="panel-body">
+                <canvas id="chart-radar" width="400" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-title">Estados</div>
+            <hr>
+
+            <div class="panel-body">
+                <canvas id="horizontalBar" width="400" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+</style>
+@section scripts {
+    <script type="text/javascript">
+        var ctxP = document.getElementById("chart-radar").getContext('2d');
+        var myPieChart = new Chart(ctxP, {
+            type: 'pie',
+            data: {
+                labels: ["sykon", "acosa", "pavilion", "Lenovo", "compusof"],
+                datasets: [{
+                    data: [300, 50, 100, 40, 120],
+                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        new Chart(document.getElementById("horizontalBar"), {
+  "type": "horizontalBar",
+  "data": {
+    "labels": ["mal Estado", "Buen Estado"],
+    "datasets": [{
+      "label": "My First Dataset",
+      "data": [22, 33, 55, 12, 86, 23, 14],
+      "fill": false,
+      "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)"
+      ],
+      "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)"
+      ],
+      "borderWidth": 1
+    }]
+  },
+  "options": {
+    "scales": {
+      "xAxes": [{
+        "ticks": {
+          "beginAtZero": true
+        }
+      }]
+    }
+  }
+});
+    </script>
+
+}
